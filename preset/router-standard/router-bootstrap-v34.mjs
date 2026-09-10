@@ -81,7 +81,7 @@ const START_GUIDE =
   + 'You route yourself: to advance, complete the current phase — alignment (ask_user_question / plan recorded) → planning (plan locked) → development (self-check) → verification (delivery_check) — or call phase_advance; tool usage alone never skips a stage.'
 
 const STAGES = [
-  { name: '了解/对齐', tools: ['read', 'glob', 'grep', 'web_search', 'ask_user_question', 'engram_recall', 'engram_verify', 'engram_respond'] },
+  { name: '了解/对齐', tools: ['read', 'glob', 'grep', 'web_search', 'ask_user_question', 'engram_recall', 'engram_verify', 'engram_respond', 'eb_peek', 'eb_grep', 'eb_status', 'eb_restore'] },
   { name: '拟合方案', tools: ['todo_write', 'exit_plan_mode', 'engram_search', 'engram_open'] },
   { name: '开发', tools: ['write', 'edit', 'str_replace_editor', 'engram_store', 'engram_link'] },
   { name: '验证', tools: ['pwsh', 'bash', 'read_image', 'job_list', 'job_output', 'job_kill'] },
@@ -98,6 +98,9 @@ const GLOBAL_SAFE = [
   'engram_open', 'engram_search', 'engram_link', 'engram_update', 'engram_remove',
   'engram_promote', 'engram_status', 'engram_verify', 'engram_respond',
   'dev_reload_preset_live', 'delivery_check',
+  // 编码守卫补位工具族（dsh-encoding-guard）：宿主级只读/诊断辅助，不参与闯关；
+  // 与标准通道 read/grep 同级。系统提示在阶段 0-2 就教模型使用，故阶段外一律放行。
+  'eb_peek', 'eb_grep', 'eb_status', 'eb_restore', 'eb_convert',
   'get_goal', 'create_goal', 'update_goal',
 ]
 
